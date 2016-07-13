@@ -35,4 +35,13 @@ class Train
     end
     found_train
   end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM trains WHERE id = #{self.id()}")
+  end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name)
+    DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{self.id()}")
+  end
 end
