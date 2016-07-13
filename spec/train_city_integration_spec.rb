@@ -27,3 +27,14 @@ describe('deleting a train', {:type => :feature}) do
     expect(page).to have_content(train2.name())
   end
 end
+
+describe('adding a new city', {:type => :feature}) do
+  it('allows a user to add a new city') do
+    visit('/')
+    fill_in('city_name', :with => "Oslo")
+    click_button('Add City')
+    expect(page).to have_content('Success!')
+    click_link('Return Home')
+    expect(page).to have_content('Oslo')
+  end
+end

@@ -33,3 +33,38 @@
   </select>
   <button type="submit" name="button">Delete Train</button>
 </form>
+
+
+<h2>Cities</h2>
+<% if @cities.any?() %>
+
+<ul>
+  <% @cities.each do |city| %>
+  <li><%= city.name() %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no cities yet!</p>
+<% end %>
+
+<p>Add a New City</p>
+
+<form action="/cities" method="post">
+  <label for="city_name">Assign a name to your city:</label>
+  <input type="text" name="city_name" id="city_name" required>
+
+  <button type="submit">Add City</button>
+</form>
+
+<h2>Update cities</h2>
+
+<form action="/city" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="city_id">Select a City</label>
+  <select id='city_id' name='city_id' type='text' required>
+    <% @cities.each() do |city| %>
+      <option value="<%= city.id()%>"> <%= city.name() %> </option>
+    <% end %>
+  </select>
+  <button type="submit" name="button">Delete City</button>
+</form>
