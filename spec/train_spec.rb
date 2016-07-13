@@ -8,6 +8,14 @@ describe(Train) do
     end
   end
 
+  describe("#id") do
+    it("sets its ID when you save it") do
+      train = Train.new({:name => "Hyperloop", :id => nil})
+      train.save()
+      expect(train.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe(".all") do
     it "empty at first" do
       expect(Train.all()).to(eq([]))
