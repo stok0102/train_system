@@ -21,4 +21,22 @@ describe(Train) do
       expect(Train.all()).to(eq([train]))
     end
   end
+
+  describe("#==") do
+    it "is the same train if it has the same name" do
+      train1 = Train.new({:name => "Orient Express", :id => 1})
+      train2 = Train.new({:name => "Orient Express", :id => 2})
+      expect(train1).to(eq(train2))
+    end
+  end
+
+  describe(".find") do
+    it "returns a train by its ID" do
+      test_train = Train.new({:name => "Orient Express", :id => nil})
+      test_train.save()
+      test_train2 = Train.new({:name => "Trans Siberian Railcar", :id => nil})
+      test_train2.save()
+      expect(Train.find(test_train2.id())).to(eq(test_train2))
+    end
+  end
 end
