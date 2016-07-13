@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Train System</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Go by Train</h1>
+
+<h2>Trains</h2>
+<p>There are no trains yet!</p>
+
+<p>Add a New Train</p>
+
+<form action="/trains" method="post">
+  <label for="train_name">Assign a name to your train:</label>
+  <input type="text" name="train_name" id="train_name">
+
+  <button type="submit">Add Train</button>
+</form>
+
+<h2>Update trains</h2>
+
+<form action="/train" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="train_id">Select a Train</label>
+  <select id='train_id' name='train_id' type='text'>
+    
+  </select>
+  <button type="submit" name="button">Delete Train</button>
+</form>
+
+    </div>
+  </body>
+</html>
