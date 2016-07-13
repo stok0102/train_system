@@ -1,70 +1,77 @@
-<h1>Go by Train</h1>
+<h1 id="jumbotron">Go by Train</h1>
 
-<h2>Trains</h2>
-<% if @trains.any?() %>
 
-<ul>
-  <% @trains.each do |train| %>
-  <li><%= train.name() %></li>
-  <% end %>
-</ul>
-<% else %>
-<p>There are no trains yet!</p>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Trains</h2>
+    <% if @trains.any?() %>
 
-<p>Add a New Train</p>
-
-<form action="/trains" method="post">
-  <label for="train_name">Assign a name to your train:</label>
-  <input type="text" name="train_name" id="train_name" required>
-
-  <button type="submit">Add Train</button>
-</form>
-
-<h2>Update trains</h2>
-
-<form action="/train" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <label for="train_id">Select a Train</label>
-  <select id='train_id' name='train_id' type='text' required>
-    <% @trains.each() do |train| %>
-      <option value="<%= train.id()%>"> <%= train.name() %> </option>
+    <ul>
+      <% @trains.each do |train| %>
+      <li><%= train.name() %></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are no trains yet!</p>
     <% end %>
-  </select>
-  <button type="submit" name="button">Delete Train</button>
-</form>
 
+    <p>Add a New Train</p>
 
-<h2>Cities</h2>
-<% if @cities.any?() %>
+    <form action="/trains" method="post">
+      <label for="train_name">Assign a name to your train:</label>
+      <input type="text" name="train_name" id="train_name" required>
 
-<ul>
-  <% @cities.each do |city| %>
-  <li><%= city.name() %></li>
-  <% end %>
-</ul>
-<% else %>
-<p>There are no cities yet!</p>
-<% end %>
+      <button class="btn btn-success" type="submit">Add Train</button>
+    </form>
 
-<p>Add a New City</p>
+    <h2>Update trains</h2>
 
-<form action="/cities" method="post">
-  <label for="city_name">Assign a name to your city:</label>
-  <input type="text" name="city_name" id="city_name" required>
+    <form action="/train" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="train_id">Select a Train</label>
+      <select id='train_id' name='train_id' type='text' required>
+        <% @trains.each() do |train| %>
+          <option value="<%= train.id()%>"> <%= train.name() %> </option>
+        <% end %>
+      </select>
+      <button class="btn btn-success" type="submit" name="button">Delete Train</button>
+    </form>
+  </div>
 
-  <button type="submit">Add City</button>
-</form>
+  <div class="col-md-6">
 
-<h2>Update cities</h2>
+    <h2>Cities</h2>
+    <% if @cities.any?() %>
 
-<form action="/city" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <label for="city_id">Select a City</label>
-  <select id='city_id' name='city_id' type='text' required>
-    <% @cities.each() do |city| %>
-      <option value="<%= city.id()%>"> <%= city.name() %> </option>
+    <ul>
+      <% @cities.each do |city| %>
+      <li><%= city.name() %></li>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>There are no cities yet!</p>
     <% end %>
-  </select>
-  <button type="submit" name="button">Delete City</button>
-</form>
+
+    <p>Add a New City</p>
+
+    <form action="/cities" method="post">
+      <label for="city_name">Assign a name to your city:</label>
+      <input type="text" name="city_name" id="city_name" required>
+
+      <button class="btn btn-success" type="submit">Add City</button>
+    </form>
+
+    <h2>Update cities</h2>
+
+    <form action="/city" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <label for="city_id">Select a City</label>
+      <select id='city_id' name='city_id' type='text' required>
+        <% @cities.each() do |city| %>
+          <option value="<%= city.id()%>"> <%= city.name() %> </option>
+        <% end %>
+      </select>
+      <button class="btn btn-success" type="submit" name="button">Delete City</button>
+    </form>
+  </div>
+</div>

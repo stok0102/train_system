@@ -1,0 +1,16 @@
+body {
+  background-image: url('img/train.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+
+#jumbotron {
+  text-align: center;
+  font-size: 10vw;
+}
+
+#city_name, #train_name {
+  color: black;
+}
