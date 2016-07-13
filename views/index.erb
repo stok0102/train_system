@@ -1,0 +1,35 @@
+<h1>Go by Train</h1>
+
+<h2>Trains</h2>
+<% if @trains.any?() %>
+
+<ul>
+  <% @trains.each do |train| %>
+  <li><%= train.name() %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no trains yet!</p>
+<% end %>
+
+<p>Add a New Train</p>
+
+<form action="/trains" method="post">
+  <label for="train_name">Assign a name to your train:</label>
+  <input type="text" name="train_name" id="train_name">
+
+  <button type="submit">Add Train</button>
+</form>
+
+<h2>Update trains</h2>
+
+<form action="/train" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <label for="train_id">Select a Train</label>
+  <select id='train_id' name='train_id' type='text'>
+    <% @trains.each() do |train| %>
+      <option value="<%= train.id()%>"> <%= train.name() %> </option>
+    <% end %>
+  </select>
+  <button type="submit" name="button">Delete Train</button>
+</form>
