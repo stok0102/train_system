@@ -10,15 +10,20 @@ describe('adding a new train', {:type => :feature}) do
     fill_in('train_name', :with => "Meaghans Train")
     click_button('Add Train')
     expect(page).to have_content('Success!')
-    click_button('Return Home')
+    click_link('Return Home')
+    expect(page).to have_content("Meaghans Train")
   end
 end
 
-describe('viewing all the trains', {:type => :feature}) do
-  it "allows a user to see all of the trains that have been created" do
-    train = Train.new({:name => 'Meaghans Train'})
+describe('deleting a train', {:type => :feature}) do
+  it "allows a user to delete a train from the list" do
+    train = Train.new({:name => "Meaghans Train"})
     train.save()
-    visit('/')
-    expect(page).to have_content(train.name)
+    train2 = Train.new({:name => "Calebs Train"})
+    train2.save()
+    visit("/")
+    click_button("Delete Train")
+    click_link("Return Home")
+    expect(page).to have_content(train2.name())
   end
 end
