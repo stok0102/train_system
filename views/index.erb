@@ -8,7 +8,10 @@
 
     <ul>
       <% @trains.each do |train| %>
-      <li><%= train.name() %></li>
+      <li><%= train.name() %><form action="/train/<%= train.id() %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-success" type="submit" name="button">Delete Train</button>
+          </form></li>
       <% end %>
     </ul>
     <% else %>
@@ -24,18 +27,6 @@
       <button class="btn btn-success" type="submit">Add Train</button>
     </form>
 
-    <h2>Update trains</h2>
-
-    <form action="/train" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <label for="train_id">Select a Train</label>
-      <select id='train_id' name='train_id' type='text' required>
-        <% @trains.each() do |train| %>
-          <option value="<%= train.id()%>"> <%= train.name() %> </option>
-        <% end %>
-      </select>
-      <button class="btn btn-success" type="submit" name="button">Delete Train</button>
-    </form>
   </div>
 
   <div class="col-md-6">
@@ -45,7 +36,10 @@
 
     <ul>
       <% @cities.each do |city| %>
-      <li><%= city.name() %></li>
+      <li><%= city.name() %><form action="/city/<%= city.id() %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-success" type="submit" name="button">Delete City</button>
+          </form></li>
       <% end %>
     </ul>
     <% else %>
@@ -61,17 +55,6 @@
       <button class="btn btn-success" type="submit">Add City</button>
     </form>
 
-    <h2>Update cities</h2>
 
-    <form action="/city" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <label for="city_id">Select a City</label>
-      <select id='city_id' name='city_id' type='text' required>
-        <% @cities.each() do |city| %>
-          <option value="<%= city.id()%>"> <%= city.name() %> </option>
-        <% end %>
-      </select>
-      <button class="btn btn-success" type="submit" name="button">Delete City</button>
-    </form>
   </div>
 </div>
