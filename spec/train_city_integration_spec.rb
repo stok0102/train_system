@@ -47,6 +47,8 @@ describe("adding a city to a train", {:type => :feature}) do
     city.save()
     visit('/')
     click_link("Meaghans Train")
-
+    check("Oslo")
+    click_button("Add cities")
+    expect(page).to have_content("Oslo")
   end
 end
