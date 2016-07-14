@@ -66,5 +66,29 @@ describe(Train) do
       train.update({:name => "Rockport Limited"})
       expect(train.name()).to(eq("Rockport Limited"))
     end
+    
+    it "lets you add a city to a train" do
+      train = Train.new({:name => "Trans Siberian Railcar", :id => nil})
+      train.save()
+      zurich = City.new({:name => "zurich", :id => nil})
+      zurich.save()
+      detroit = City.new({:name => "detroit", :id => nil})
+      detroit.save()
+      train.update({:city_ids => [zurich.id(), detroit.id()]})
+      expect(train.cities()).to(eq([zurich, detroit]))
+    end
+  end
+
+  describe("#cities") do
+    it "returns all of the cities a train stops at" do
+      train = Train.new({:name => "Trans Siberian Railcar", :id => nil})
+      train.save()
+      zurich = City.new({:name => "zurich", :id => nil})
+      zurich.save()
+      detroit = City.new({:name => "detroit", :id => nil})
+      detroit.save()
+      train.update({:city_ids => [zurich.id(), detroit.id()]})
+      expect(train.cities()).to(eq([zurich, detroit]))
+    end
   end
 end
