@@ -41,12 +41,12 @@ end
 
 describe("adding a city to a train", {:type => :feature}) do
   it "allows an admin to add a stop to a train route" do
-    train = Train.new({:name => "Meaghans Train"})
+    train = Train.new({:name => "Meaghans Train", :id => nil})
     train.save()
-    city = City.new({:name => "Oslo"})
+    city = City.new({:name => "Oslo", :id => nil})
     city.save()
     visit('/')
     click_link("Meaghans Train")
-    save_and_open_page
+
   end
 end
