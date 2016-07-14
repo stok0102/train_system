@@ -66,5 +66,25 @@ describe(City) do
       city.update({:name => "Grove City"})
       expect(city.name()).to(eq("Grove City"))
     end
+
+    it "lets you add a trian to a city" do
+    train = Train.new({:name => "Hyper Loop", :id => nil})
+    train.save()
+    city = City.new({:name => "Zagreb", :id => nil})
+    city.save()
+    city.update({:train_ids => [train.id()]})
+    expect(train.cities()).to(eq([city]))
+    end
+  end
+
+  describe('#trains') do
+    it "returns all trains that stop in a particular city" do
+      train = Train.new({:name => "Hyper Loop", :id => nil})
+      train.save()
+      city = City.new({:name => "Zagreb", :id => nil})
+      city.save()
+      city.update({:train_ids => [train.id()]})
+      expect(train.cities()).to(eq([city]))
+    end
   end
 end
