@@ -4,6 +4,7 @@ also_reload("lib/**/*.rb")
 require("./lib/train")
 require("./lib/city")
 require('pg')
+require('pry')
 
 DB = PG.connect({:dbname => 'train_system_test'})
 
@@ -54,6 +55,7 @@ get("/cities/:id") do
 end
 
 patch("/trains/:id") do
+  binding.pry
   train_id = params.fetch("id").to_i()
   @train = Train.find(train_id)
   city_ids = params.fetch("city_ids")
