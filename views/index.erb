@@ -5,10 +5,10 @@
   <div class="col-md-6">
     <h2>Trains</h2>
     <% if @trains.any?() %>
-
+      <p>Click on a train to see the cities where they stop</p>
     <ul>
       <% @trains.each do |train| %>
-      <li><%= train.name() %></li>
+      <li><a href="/trains/<%=train.id()%>"><%= train.name() %></a></li>
       <% end %>
     </ul>
     <% else %>
@@ -45,7 +45,7 @@
 
     <ul>
       <% @cities.each do |city| %>
-      <li><%= city.name() %></li>
+      <li><a href="/cities/<%=city.id()%>"><%= city.name() %></a></li>
       <% end %>
     </ul>
     <% else %>

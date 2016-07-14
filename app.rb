@@ -40,3 +40,15 @@ delete("/city") do
   @cities = City.all()
   erb(:success)
 end
+
+get("trains/:id") do
+  @train = Train.find(params.fetch("id").to_i())
+  @cities = City.all()
+  erb(:train_info)
+end
+
+get("cities/:id") do
+  @city = City.find(params.fetch("id").to_i())
+  @trains = Train.all()
+  erb(:city_info)
+end

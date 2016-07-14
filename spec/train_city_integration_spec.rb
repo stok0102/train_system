@@ -38,3 +38,15 @@ describe('adding a new city', {:type => :feature}) do
     expect(page).to have_content('Oslo')
   end
 end
+
+describe("adding a city to a train", {:type => :feature}) do
+  it "allows an admin to add a stop to a train route" do
+    train = Train.new({:name => "Meaghans Train"})
+    train.save()
+    city = City.new({:name => "Oslo"})
+    city.save()
+    visit('/')
+    click_link("Meaghans Train")
+    save_and_open_page
+  end
+end
