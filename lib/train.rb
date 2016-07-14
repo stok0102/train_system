@@ -1,3 +1,5 @@
+require('pry')
+
 class Train
   attr_reader(:name, :id)
 
@@ -45,8 +47,11 @@ class Train
     @name = attributes.fetch(:name, @name)
     DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{self.id()}")
 
+    @time = attributes.fetch(:time, @time)
+
     attributes.fetch(:city_ids, []).each() do |city_id|
-      DB.exec("INSERT INTO stops (train_id, city_id) VALUES (#{self.id()}, #{city_id});")
+      binding.pry
+      DB.exec("INSERT INTO stops (train_id, city_id, time) VALUES (#{self.id()}, #{city_id}, #{@time});")
     end
   end
 

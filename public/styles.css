@@ -11,6 +11,6 @@ body {
   font-size: 10vw;
 }
 
-#city_name, #train_name {
+#city_name, #train_name, .timeInput {
   color: black;
 }
